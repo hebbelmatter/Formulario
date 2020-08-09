@@ -1757,8 +1757,8 @@ export default {
           { 'nombreFarmaco': 'Efedra', 'utilizaFarmaco': ['optionsEfedra', 'selectedEfedra'], 'listadoFarmacos': 'efedraMedications' },
         ],
         //COVID
-        optionsCovid: ['Sí', 'No'],
-        questionsCovid: {}
+        // optionsCovid: ['Sí', 'No'],
+        // questionsCovid: {}
 
       }
     }
