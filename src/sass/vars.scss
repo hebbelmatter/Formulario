@@ -1,0 +1,43 @@
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #868e96 !default;
+$gray-700: #495057 !default;
+$gray-800: #373a3c !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
+$blue:    #0067EB !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #e83e8c !default;
+$red:     #FA1616 !default;
+$orange:  #f0ad4e !default;
+$yellow:  #FF7518 !default;
+$green:   #06d310!default;
+$teal:    #20c997 !default;
+$cyan:    #9954BB !default;
+
+//#12679c;//#888888;//#336d88;//#222e3c;//#5baa00;//#003459;//#eb3c14;//#851de0;//#ff5200; //$blue !default;
+$primary:       #5baa00;//#;//#;//#;//#;//#;//#;//#;//#; //$blue !default;
+$secondary:     #3a3535;    //#e6e7e9;    //#f4f4f4;//#eeeeee;    //$gray-400 !default;
+$success:       $green !default;
+$info:          $purple !default;
+$warning:       $purple !default;
+$danger:        $red !default;
+$light:         $white !default;
+$dark:          #3a3535;//$gray-900 !default;
+
+$font-family-sans-serif: Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+// $enable-shadows: true;
+// $body-bg: #f5f6fa;
+// $line-height: 2.5;
+// $border-radius: 0.55rem;
+// $border-radius-sm: .15rem;
+$spacer: 1rem;
+
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import 'node_modules/bootstrap-vue/src/index.scss';
