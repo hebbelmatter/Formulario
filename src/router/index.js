@@ -6,6 +6,7 @@ import Login from '../views/Login.vue'
 import HomeContentNurse from '@/components/Nurse/HomeContentNurse.vue'
 import FormularioNurse from '@/components/Nurse/FormularioNurse.vue'
 import FormularioNurseAntecedentesMorbidos from '@/components/Nurse/FormularioNurseAntecedentesMorbidos.vue'
+import FormularioNurseCovid from '@/components/Nurse/FormularioNurseCovid.vue'
 
 
 
@@ -38,6 +39,11 @@ const routes = [
         path: 'antecedentes-morbidos',
         name: 'FormularioNurseAntecedentesMorbidos',
         component: FormularioNurseAntecedentesMorbidos
+      },
+      {
+        path: 'covid',
+        name: 'FormularioNurseCovid',
+        component: FormularioNurseCovid
       }
 
     ]

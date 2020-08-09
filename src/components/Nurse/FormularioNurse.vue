@@ -1250,19 +1250,10 @@
       </b-col>
     </b-row>
 
-    <b-row align-v="center">
-      <b-col class="mt-5 mb-3">
-        <h4 class="font-weight-bold">Antecedentes mórbidos</h4>
-      </b-col>
-    </b-row>
-
-    <b-row align-v="center">
-      <b-col class="mt-3 mb-3">
-        <h5 class="font-weight-bold">Enfermedad cardiovascular</h5>
-      </b-col>
-    </b-row>
-
-    <b-row align-v="center">
+    <b-row
+      align-v="center"
+      class="mt-3"
+    >
       <b-col>
 
         <b-table
@@ -1369,6 +1360,87 @@
       </b-col>
       <b-col cols="8">
         <b-form-input v-model="patient.LoHanAnestesiadoAlgunaVezDescription"></b-form-input>
+      </b-col>
+    </b-row>
+
+    <b-row align-v="center">
+      <b-col
+        cols="4"
+        class="my-3"
+      >
+        <h6 class="font-weight-normal">¿Tuvo algún problema con la anestesia? </h6>
+      </b-col>
+      <b-col cols="8">
+        <b-form-select
+          v-model="patient.selectedTuvoAlgunProblemaConLaAnestesia"
+          :options="patient.optionsTuvoAlgunProblemaConLaAnestesia"
+        ></b-form-select>
+      </b-col>
+    </b-row>
+
+    <b-row
+      align-v="center"
+      v-if="patient.selectedTuvoAlgunProblemaConLaAnestesia === 'Sí'"
+    >
+      <b-col cols="4">
+        <h6 class="font-italic">Describa </h6>
+      </b-col>
+      <b-col cols="8">
+        <b-form-input v-model="patient.tuvoAlgunProblemaConLaAnestesiaDescription"></b-form-input>
+      </b-col>
+    </b-row>
+
+    <b-row align-v="center">
+      <b-col
+        cols="4"
+        class="my-3"
+      >
+        <h6 class="font-weight-normal">¿Algún familiar consanguíneo tuvo complicaciones? (fiebre alta, convulsiones, alergia) </h6>
+      </b-col>
+      <b-col cols="8">
+        <b-form-select
+          v-model="patient.selectedAlgunFamiliarConsanguineoTuvoComplicaciones"
+          :options="patient.optionsAlgunFamiliarConsanguineoTuvoComplicaciones"
+        ></b-form-select>
+      </b-col>
+    </b-row>
+
+    <b-row
+      align-v="center"
+      v-if="patient.selectedAlgunFamiliarConsanguineoTuvoComplicaciones === 'Sí'"
+    >
+      <b-col cols="4">
+        <h6 class="font-italic">Describa </h6>
+      </b-col>
+      <b-col cols="8">
+        <b-form-input v-model="patient.algunFamiliarConsanguineoTuvoComplicacionesDescription"></b-form-input>
+      </b-col>
+    </b-row>
+
+    <b-row align-v="center">
+      <b-col
+        cols="4"
+        class="my-3"
+      >
+        <h6 class="font-weight-normal">Tiene algún familiar en la Teletón? </h6>
+      </b-col>
+      <b-col cols="8">
+        <b-form-select
+          v-model="patient.selectedTieneAlgunFamiliarEnLaTeleton"
+          :options="patient.optionsTieneAlgunFamiliarEnLaTeleton"
+        ></b-form-select>
+      </b-col>
+    </b-row>
+
+    <b-row
+      align-v="center"
+      v-if="patient.selectedTieneAlgunFamiliarEnLaTeleton === 'Sí'"
+    >
+      <b-col cols="4">
+        <h6 class="font-italic">Describa </h6>
+      </b-col>
+      <b-col cols="8">
+        <b-form-input v-model="patient.tieneAlgunFamiliarEnLaTeletonDescription"></b-form-input>
       </b-col>
     </b-row>
 
@@ -1566,11 +1638,11 @@ export default {
         alergiaMedicamentosaDetails: '',
         optionsAlergiaLatex: ['Sí', 'No'],
         selectedAlergiaLatex: 'No',
+        // Sintomatología
         optionsDolorPecho: ['Sí', 'No'],
         selectedDolorPecho: 'No',
         optionsReaccionTransfusionSanguinea: ['Sí', 'No'],
         selectedReaccionTransfusionSanguinea: 'No',
-        // *****
         optionsParalisis: ['Sí', 'No'],
         selectedParalisis: 'No',
         optionsTemblores: ['Sí', 'No'],
@@ -1633,9 +1705,20 @@ export default {
           { 'index': 4, 'cirugia': '', 'tipoAnestesia': '', 'fecha': '' },
           { 'index': 5, 'cirugia': '', 'tipoAnestesia': '', 'fecha': '' }
         ],
+        //En relación a la anestesia
         optionsLoHanAnestesiadoAlgunaVez: ['Sí', 'No'],
         selectedLoHanAnestesiadoAlgunaVez: 'No',
         LoHanAnestesiadoAlgunaVezDescription: '',
+        optionsTuvoAlgunProblemaConLaAnestesia: ['Sí', 'No'],
+        selectedTuvoAlgunProblemaConLaAnestesia: 'No',
+        tuvoAlgunProblemaConLaAnestesiaDescription: '',
+        optionsAlgunFamiliarConsanguineoTuvoComplicaciones: ['Sí', 'No'],
+        selectedAlgunFamiliarConsanguineoTuvoComplicaciones: 'No',
+        algunFamiliarConsanguineoTuvoComplicacionesDescription: '',
+        optionsTieneAlgunFamiliarEnLaTeleton: ['Sí', 'No'],
+        selectedTieneAlgunFamiliarEnLaTeleton: 'No',
+        tieneAlgunFamiliarEnLaTeletonDescription: '',
+
 
 
         temp: '',
@@ -1672,7 +1755,10 @@ export default {
           { 'nombreFarmaco': 'Ginko Biloba', 'utilizaFarmaco': ['optionsGinkoBiloba', 'selectedGinkoBiloba'], 'listadoFarmacos': 'ginkoBilobaMedications' },
           { 'nombreFarmaco': 'Yerbas de San Juan', 'utilizaFarmaco': ['optionsYerbasSanJuan', 'selectedYerbasSanJuan'], 'listadoFarmacos': 'yerbasSanJuanMedications' },
           { 'nombreFarmaco': 'Efedra', 'utilizaFarmaco': ['optionsEfedra', 'selectedEfedra'], 'listadoFarmacos': 'efedraMedications' },
-        ]
+        ],
+        //COVID
+        optionsCovid: ['Sí', 'No'],
+        questionsCovid: {}
 
       }
     }

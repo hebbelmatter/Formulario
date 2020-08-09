@@ -4,7 +4,7 @@
       <b-col
         v-for="(step, key) in steps"
         :key="key"
-        class="text-center monospace stepper-cursor"
+        class="text-center stepper-cursor"
         :class="[step.number === activeStep ? 'activeClass' : '']"
       >
         <!-- :class="[step.number === activeStep ? 'activeClass' : 'border-bottom border-left', parseInt(step.number) === steps.length ? 'border-right' : '']" -->
@@ -50,9 +50,11 @@ export default {
     return {
       steps: [
         { number: '1', text: '1. Información del paciente', icon: 'fas fa-user-edit', path: 'FormularioNurseInformacionPaciente' },
-        { number: '2', text: '2. Antecedentes mórbidos y farmacológicos', icon: 'fas fa-notes-medical', path: 'FormularioNurseAntecedentesMorbidos' },
-        { number: '3', text: '3. Otros más', icon: 'fas fa-user-md', path: 'HomeContentNurse' },
-        { number: '4', text: '4. Último paso', icon: 'fab fa-reddit-alien', path: 'HomeContentNurse' },
+        { number: '2', text: '2. Antecedentes mórbidos y farmacológicos', icon: 'fas fa-weight', path: 'FormularioNurseAntecedentesMorbidos' },
+        { number: '3', text: '3. Antecedentes quirúrgicos', icon: 'fas fa-notes-medical', path: 'HomeContentNurse' },
+        { number: '4', text: '4. COVID-19', icon: 'fas fa-virus', path: 'FormularioNurseCovid' },
+        { number: '5', text: '5. Último paso', icon: 'fab fa-reddit-alien', path: 'HomeContentNurse' },
+
       ]
     }
   },
