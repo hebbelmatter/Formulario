@@ -492,6 +492,21 @@ export default {
       }
     }
   },
+  mounted () {
+    if (this.$storage.get('currentUser') != '') {
+      let savedUser = this.$storage.get('currentUser');
+
+      this.name = savedUser.name;
+      this.lastName = savedUser.lastName;
+      this.rol = savedUser.rol;
+    }
+
+    if (this.$storage.get('formPatientData') != '') {
+      let savedPatientData = this.$storage.get('formPatientData');
+
+      this.patient = savedPatientData;
+    }
+  },
   methods: {
     medicationsQuantity (medications) {
       return medications === '' ? 0 : medications.split(',').length;
@@ -531,7 +546,8 @@ export default {
     },
     nextStep () {
 
-      this.$storage.set('formPatientData', this.patient);
+
+      //   this.$storage.set('formPatientData', this.patient);
 
       this.$swal({
         text: ' La información del paciente ha sido almacenada correctamente',

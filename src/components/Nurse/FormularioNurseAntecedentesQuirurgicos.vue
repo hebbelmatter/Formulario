@@ -136,7 +136,7 @@
         cols="4"
         class="my-3"
       >
-        <h6 class="font-weight-normal">Tiene algún familiar en la Teletón? </h6>
+        <h6 class="font-weight-normal">¿Tiene algún familiar en la Teletón? </h6>
       </b-col>
       <b-col cols="8">
         <b-form-select
