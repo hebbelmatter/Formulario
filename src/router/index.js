@@ -7,7 +7,8 @@ import HomeContentNurse from '@/components/Nurse/HomeContentNurse.vue'
 import FormularioNurse from '@/components/Nurse/FormularioNurse.vue'
 import FormularioNurseAntecedentesMorbidos from '@/components/Nurse/FormularioNurseAntecedentesMorbidos.vue'
 import FormularioNurseCovid from '@/components/Nurse/FormularioNurseCovid.vue'
-
+import FormularioNurseAntecedentesQuirurgicos from '@/components/Nurse/FormularioNurseAntecedentesQuirurgicos.vue'
+import FormularioNurseScoreC from '@/components/Nurse/FormularioNurseScoreC.vue'
 
 
 Vue.use(VueRouter)
@@ -41,10 +42,21 @@ const routes = [
         component: FormularioNurseAntecedentesMorbidos
       },
       {
+        path: 'antecedentes-quirurgicos',
+        name: 'FormularioNurseAntecedentesQuirurgicos',
+        component: FormularioNurseAntecedentesQuirurgicos
+      },
+      {
         path: 'covid',
         name: 'FormularioNurseCovid',
         component: FormularioNurseCovid
-      }
+      },
+      {
+        path: 'score-c',
+        name: 'FormularioNurseScoreC',
+        component: FormularioNurseScoreC
+
+      },
 
     ]
   },

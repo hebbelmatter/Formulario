@@ -1,6 +1,386 @@
 <template>
   <b-container class="border rounded shadow mt-5 mb-5 px-4">
-    <Stepper activeStep="2" />
+    <!-- <b-container fluid>
+      <b-row>
+        <b-col
+          class="text-center"
+          style="background-color: #5baa00; color: white;"
+        >1</b-col>
+        <b-col class="text-center border">2</b-col>
+        <b-col class="text-center border">3</b-col>
+        <b-col class="text-center border">4</b-col>
+      </b-row>
+    </b-container> -->
+    <Stepper activeStep="1" />
+    <b-row>
+      <b-col class="mt-5 mb-4">
+        <h3 class="font-weight-bold">1. Información del paciente</h3>
+      </b-col>
+    </b-row>
+
+    <div class="shadow rounded border p-4">
+      <b-row align-v="center">
+        <b-col class="mt-0 mb-3">
+          <h4 class="font-weight-bold">Datos personales</h4>
+        </b-col>
+      </b-row>
+
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">RUT: </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-input v-model="patient.rut"></b-form-input>
+        </b-col>
+      </b-row>
+
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Nombres: </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-input v-model="patient.patientName"></b-form-input>
+        </b-col>
+      </b-row>
+
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Apellido Paterno: </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-input v-model="patient.patientLastName1"></b-form-input>
+        </b-col>
+      </b-row>
+
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Apellido Materno: </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-input v-model="patient.patientLastName2"></b-form-input>
+        </b-col>
+      </b-row>
+
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Fecha de nacimiento: </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-input
+            v-model="patient.birthDate"
+            type="date"
+          ></b-form-input>
+        </b-col>
+      </b-row>
+
+      <b-row align-v="center">
+        <b-col class="mt-5 mb-3">
+          <h4 class="font-weight-bold">Datos de contacto</h4>
+        </b-col>
+      </b-row>
+
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Calle: </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-input v-model="patient.addressStreet"></b-form-input>
+        </b-col>
+      </b-row>
+
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Número: </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-input v-model="patient.addressNumber"></b-form-input>
+        </b-col>
+      </b-row>
+
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Block: </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-input v-model="patient.block"></b-form-input>
+        </b-col>
+      </b-row>
+
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Ciudad: </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-input v-model="patient.city"></b-form-input>
+        </b-col>
+      </b-row>
+
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Zona: </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-select
+            v-model="patient.selectedZone"
+            :options="patient.optionsZone"
+          ></b-form-select>
+        </b-col>
+      </b-row>
+
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">¿Dispone de acompañante? </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedCompanion"
+            :options="patient.optionsCompanion"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedCompanion"
+            :options="patient.optionsCompanion"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
+
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">¿Dispone de un centro de salud a menos de 30 min? </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedNearbyHealthCenter"
+            :options="patient.optionsNearbyHealthCenter"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedNearbyHealthCenter"
+            :options="patient.optionsNearbyHealthCenter"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
+
+      <b-row align-v="center">
+        <b-col class="mt-5 mb-3">
+          <h4 class="font-weight-bold">Antecedentes clínicos</h4>
+        </b-col>
+      </b-row>
+
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Altura (metros): </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-input
+            v-model="patient.height"
+            type="number"
+          ></b-form-input>
+        </b-col>
+      </b-row>
+
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Peso (kilogramos): </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-input
+            v-model="patient.weight"
+            type="number"
+          ></b-form-input>
+        </b-col>
+      </b-row>
+
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Fuma: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedSmoke"
+            :options="patient.optionsSmoke"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedSmoke"
+            :options="patient.optionsSmoke"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
+
+      <b-row
+        align-v="center"
+        v-if="patient.selectedSmoke === 'Sí'"
+      >
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-italic">Cantidad de cigarrillos diarios: </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-input
+            v-model="patient.smokeDailyQuantity"
+            type="number"
+          ></b-form-input>
+
+        </b-col>
+      </b-row>
+
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Consume alcohol: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedAlcohol"
+            :options="patient.optionsAlcohol"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedAlcohol"
+            :options="patient.optionsAlcohol"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
+
+      <b-row
+        align-v="center"
+        v-if="patient.selectedAlcohol === 'Sí'"
+      >
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-italic">Cantidad de tragos semanales de alcohol: </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-input
+            v-model="patient.alcoholDailyQuantity"
+            type="number"
+          ></b-form-input>
+        </b-col>
+      </b-row>
+
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Consume drogas: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedDrugs"
+            :options="patient.optionsDrugs"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedDrugs"
+            :options="patient.optionsDrugs"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
+    </div>
+
+    <b-row
+      align-v="center"
+      v-if="patient.selectedDrugs === 'Sí'"
+    >
+      <b-col
+        cols="4"
+        class="my-3"
+      >
+        <h6 class="font-italic">¿Qué drogas consume? </h6>
+      </b-col>
+      <b-col cols="8">
+        <b-form-input v-model="patient.drugsType"></b-form-input>
+      </b-col>
+    </b-row>
+
+    <b-row
+      align-v="center"
+      v-if="patient.selectedDrugs === 'Sí'"
+    >
+      <b-col
+        cols="4"
+        class="my-3"
+      >
+        <h6 class="font-italic">Frecuencia semanal consumo de drogas: </h6>
+      </b-col>
+      <b-col cols="8">
+        <b-form-input
+          v-model="patient.drugsDailyQuantity"
+          type="number"
+        ></b-form-input>
+      </b-col>
+    </b-row>
+
+    <!-- INICIO -->
+
     <b-row align-v="center">
       <b-col class="mt-5 mb-3">
         <h3 class="font-weight-bold">2. Antecedentes Mórbidos</h3>
@@ -1218,17 +1598,368 @@
       </b-col>
     </b-row>
 
+    <b-row>
+      <b-col class="mt-5 mb-3">
+        <h3 class="font-weight-bold">4. Antecedentes Quirúrgicos</h3>
+      </b-col>
+    </b-row>
+
+    <b-row align-v="center">
+      <b-col class="mt-5 mb-3">
+        <h4 class="font-weight-bold">Antecedentes quirúrgicos</h4>
+      </b-col>
+    </b-row>
+
+    <b-row align-v="center">
+      <b-col>
+        <b-table
+          bordered
+          striped
+          hover
+          class="shadow"
+          :fields="patient.surgeryFields"
+          :items="patient.surgeries"
+        >
+          <template v-slot:cell(index)="data">{{ data.value }}</template>
+
+          <template v-slot:cell(cirugia)="data">
+            <b-form-input v-model="patient.surgeries[data.index]['cirugia']"></b-form-input>
+          </template>
+
+          <template v-slot:cell(tipoAnestesia)="data">
+            <b-form-input v-model="patient.surgeries[data.index]['tipoAnestesia']"></b-form-input>
+          </template>
+
+          <template v-slot:cell(fecha)="data">
+            <b-form-input
+              v-model="patient.surgeries[data.index]['fecha']"
+              type="date"
+            ></b-form-input>
+          </template>
+
+        </b-table>
+      </b-col>
+    </b-row>
+
+    <b-row align-v="center">
+      <b-col class="mt-5 mb-3">
+        <h4 class="font-weight-bold">En relación a la anestesia</h4>
+      </b-col>
+    </b-row>
+
+    <b-row align-v="center">
+      <b-col
+        cols="4"
+        class="my-3"
+      >
+        <h6 class="font-weight-normal">¿Lo han anestesiado alguna vez? </h6>
+      </b-col>
+      <b-col cols="8">
+        <b-form-select
+          v-model="patient.selectedLoHanAnestesiadoAlgunaVez"
+          :options="patient.optionsLoHanAnestesiadoAlgunaVez"
+        ></b-form-select>
+      </b-col>
+    </b-row>
+
+    <b-row
+      align-v="center"
+      v-if="patient.selectedLoHanAnestesiadoAlgunaVez === 'Sí'"
+    >
+      <b-col cols="4">
+        <h6 class="font-italic">Describa </h6>
+      </b-col>
+      <b-col cols="8">
+        <b-form-input v-model="patient.LoHanAnestesiadoAlgunaVezDescription"></b-form-input>
+      </b-col>
+    </b-row>
+
+    <b-row align-v="center">
+      <b-col
+        cols="4"
+        class="my-3"
+      >
+        <h6 class="font-weight-normal">¿Tuvo algún problema con la anestesia? </h6>
+      </b-col>
+      <b-col cols="8">
+        <b-form-select
+          v-model="patient.selectedTuvoAlgunProblemaConLaAnestesia"
+          :options="patient.optionsTuvoAlgunProblemaConLaAnestesia"
+        ></b-form-select>
+      </b-col>
+    </b-row>
+
+    <b-row
+      align-v="center"
+      v-if="patient.selectedTuvoAlgunProblemaConLaAnestesia === 'Sí'"
+    >
+      <b-col cols="4">
+        <h6 class="font-italic">Describa </h6>
+      </b-col>
+      <b-col cols="8">
+        <b-form-input v-model="patient.tuvoAlgunProblemaConLaAnestesiaDescription"></b-form-input>
+      </b-col>
+    </b-row>
+
+    <b-row align-v="center">
+      <b-col
+        cols="4"
+        class="my-3"
+      >
+        <h6 class="font-weight-normal">¿Algún familiar consanguíneo tuvo complicaciones? (fiebre alta, convulsiones, alergia) </h6>
+      </b-col>
+      <b-col cols="8">
+        <b-form-select
+          v-model="patient.selectedAlgunFamiliarConsanguineoTuvoComplicaciones"
+          :options="patient.optionsAlgunFamiliarConsanguineoTuvoComplicaciones"
+        ></b-form-select>
+      </b-col>
+    </b-row>
+
+    <b-row
+      align-v="center"
+      v-if="patient.selectedAlgunFamiliarConsanguineoTuvoComplicaciones === 'Sí'"
+    >
+      <b-col cols="4">
+        <h6 class="font-italic">Describa </h6>
+      </b-col>
+      <b-col cols="8">
+        <b-form-input v-model="patient.algunFamiliarConsanguineoTuvoComplicacionesDescription"></b-form-input>
+      </b-col>
+    </b-row>
+
+    <b-row align-v="center">
+      <b-col
+        cols="4"
+        class="my-3"
+      >
+        <h6 class="font-weight-normal">Tiene algún familiar en la Teletón? </h6>
+      </b-col>
+      <b-col cols="8">
+        <b-form-select
+          v-model="patient.selectedTieneAlgunFamiliarEnLaTeleton"
+          :options="patient.optionsTieneAlgunFamiliarEnLaTeleton"
+        ></b-form-select>
+      </b-col>
+    </b-row>
+
+    <b-row
+      align-v="center"
+      v-if="patient.selectedTieneAlgunFamiliarEnLaTeleton === 'Sí'"
+    >
+      <b-col cols="4">
+        <h6 class="font-italic">Describa </h6>
+      </b-col>
+      <b-col cols="8">
+        <b-form-input v-model="patient.tieneAlgunFamiliarEnLaTeletonDescription"></b-form-input>
+      </b-col>
+    </b-row>
+
+    <!-- Formulario COVID -->
+
+    <b-row>
+      <b-col class="mt-5 mb-3">
+        <h3 class="font-weight-bold">4. Formulario COVID-19</h3>
+      </b-col>
+    </b-row>
+
+    <b-row>
+      <b-col class="mt-5 mb-3">
+        <h4 class="font-weight-bold">Cuestionario preoperatorio para pacientes durante pandemia COVID 19.</h4>
+      </b-col>
+    </b-row>
+
+    <b-row>
+      <b-col class="mt-3 mb-3">
+        <p class="font-weight-normal text-justify mx-2">El cuestionario que usted responderá a continuación es para protegerlo tanto a usted como al
+          personal de salud que participará en todo el proceso de su intervención quirúrgica. Rogamos
+          entregar datos confiables, para así poder entregarle una atención segura y de calidad en la cirugía y/o procedimiento.</p>
+      </b-col>
+    </b-row>
+
+    <b-row
+      align-v="center"
+      class="mt-3"
+    >
+      <b-col>
+
+        <b-table
+          bordered
+          striped
+          hover
+          responsive
+          :items="patient.questionsCovid"
+          :fields="patient.covidFields"
+          class="shadow"
+        >
+
+          <template v-slot:cell(index)="data">
+            <span>{{ patient.questionsCovid[data.index]['index'] }}</span>
+          </template>
+
+          <template v-slot:cell(pregunta)="data">
+            <span>{{ patient.questionsCovid[data.index]['question'] }}</span>
+          </template>
+
+          <template v-slot:cell(respuesta)="data">
+            <b-form-select
+              v-model="patient.questionsCovid[data.index]['selected']"
+              :options="patient.optionsCovid"
+              :disabled="data.index === 6 - 1"
+            ></b-form-select>
+          </template>
+
+        </b-table>
+      </b-col>
+    </b-row>
+
+    <!-- Score C -->
+
+    <b-row>
+      <b-col class="mt-5 mb-3">
+        <h3 class="font-weight-bold">5. Score C</h3>
+      </b-col>
+    </b-row>
+
+    <b-row class="text-center">
+      <b-col class="mt-5 mb-3">
+        <h4 class="font-weight-bold">Categorización de riesgo</h4>
+        <h4 class="font-weight-bold">Factores del paciente</h4>
+      </b-col>
+    </b-row>
+
+    <b-row
+      align-v="center"
+      class="mt-3"
+    >
+      <b-col>
+
+        <b-table
+          bordered
+          striped
+          hover
+          responsive
+          fixed
+          :items="patient.scoreCCategorizationItems"
+          :fields="patient.scoreCCategorizationFields"
+          class="shadow"
+        >
+
+          <!-- <template v-slot:cell(index)="data">
+            <span>{{ patient.questionsCovid[data.index]['index'] }}</span>
+          </template>
+
+          <template v-slot:cell(pregunta)="data">
+            <span>{{ patient.questionsCovid[data.index]['question'] }}</span>
+          </template>
+
+          <template v-slot:cell(respuesta)="data">
+            <b-form-select
+              v-model="patient.questionsCovid[data.index]['selected']"
+              :options="patient.optionsCovid"
+              :disabled="data.index === 6 - 1"
+            ></b-form-select> 
+            </template> -->
+
+        </b-table>
+      </b-col>
+    </b-row>
+
+    <b-row>
+      <b-col class="mt-5 mb-3">
+        <h4 class="font-weight-bold">Score C para el paciente {{ patient.patientName}} {{ patient.patientLastName1 }} {{ patient.patientLastName2 }}</h4>
+      </b-col>
+    </b-row>
+
+    <b-row
+      align-v="center"
+      class="mt-3"
+    >
+      <b-col>
+
+        <b-table
+          bordered
+          striped
+          hover
+          responsive
+          fixed
+          :items="patient.scoreCPatientItems"
+          :fields="patient.scoreCPatientFields"
+          class="shadow"
+        >
+          <template v-slot:cell(score)="data">
+            <b-form-input
+              v-model="patient.scoreCPatientItems[data.index]['score']"
+              type="number"
+            ></b-form-input>
+          </template>
+        </b-table>
+      </b-col>
+    </b-row>
+
+    <b-row
+      align-v="center"
+      class="mt-5 mb-5"
+    >
+      <b-col>
+        <h4 class="font-weight-bold">Score C:</h4>
+      </b-col>
+      <b-col>
+        <b-form-input
+          :value="scoreCSum"
+          disabled
+        ></b-form-input>
+      </b-col>
+    </b-row>
+
+    <b-row
+      align-v="center"
+      class="my-2"
+    >
+      <b-col>
+        <h4 class="font-weight-bold">Score A:</h4>
+      </b-col>
+      <b-col>
+        <b-form-input
+          v-model="patient.scoreA"
+          type="number"
+        ></b-form-input>
+      </b-col>
+    </b-row>
+
+    <b-row
+      align-v="center"
+      class="my-2"
+    >
+      <b-col>
+        <h4 class="font-weight-bold">Score B:</h4>
+      </b-col>
+      <b-col>
+        <b-form-input
+          v-model="patient.scoreB"
+          type="number"
+        ></b-form-input>
+      </b-col>
+    </b-row>
+
+    <b-row
+      align-v="center"
+      class="my-2"
+    >
+      <b-col>
+        <h4 class="font-weight-bold">Score total: </h4>
+      </b-col>
+      <b-col>
+        <b-form-input
+          :value="scoreTotal"
+          disabled
+        ></b-form-input>
+      </b-col>
+    </b-row>
+
     <!-- Buttons -->
 
     <b-row>
-      <b-col>
-        <b-button
-          variant="light"
-          block
-          class="my-5 border"
-          @click="confirmDiscard"
-        ><span class="font-weight-normal">Atrás</span></b-button>
-      </b-col>
       <!-- <b-col>
         <b-button
           variant="light"
@@ -1239,15 +1970,33 @@
       </b-col> -->
       <b-col>
         <b-button
+          variant="light"
+          block
+          class="my-5 border"
+          @click="confirmDiscard"
+        ><span class="font-weight-normal ">Descartar los cambios y volver al home</span></b-button>
+      </b-col>
+      <b-col>
+        <b-button
           variant="primary"
           block
           class="my-5"
           @click="nextStep"
         ><span class="font-weight-normal">Guardar y continuar</span></b-button>
       </b-col>
+      <!-- <b-col>
+        <b-button
+          variant="light"
+          block
+          class="my-5 border"
+          @click="sendPatientData"
+        ><span class="font-weight-normal">Enviar la información</span>
+        </b-button>
+      </b-col> -->
     </b-row>
+
     <b-modal
-      ref="form-modal-antecedentes-morbidos"
+      ref="form-modal"
       centered
       hide-footer
       hide-header
@@ -1276,21 +2025,20 @@
           <b-button
             variant="primary"
             block
-            @click="backStep"
+            @click="backHome"
           >Confirmar</b-button>
         </b-col>
       </b-row>
     </b-modal>
-  </b-container>
 
+  </b-container>
 </template>
 
 <script>
-
 import Stepper from '@/components/Stepper.vue'
 
 export default {
-  name: 'FormularioNurseAntecedentesMorbidos',
+  name: 'FormularioNurse',
   components: {
     Stepper,
   },
@@ -1667,6 +2415,7 @@ export default {
       let savedPatientData = this.$storage.get('formPatientData');
 
       this.patient = savedPatientData;
+
     }
   },
   methods: {
@@ -1674,10 +2423,11 @@ export default {
       return medications === '' ? 0 : medications.split(',').length;
     },
     savePatientData () {
+
       this.$storage.set('formPatientData', this.patient);
 
       this.modalMessage = 'Los datos han sido almacenados correctamente';
-      this.$refs['form-modal-antecedentes-morbidos'].show();
+      this.$refs['form-modal'].show();
 
     },
     sendPatientData () {
@@ -1692,17 +2442,21 @@ export default {
 
       this.$storage.remove('formPatientData');
 
-      this.modalMessage = 'Los datos han sido correctamente enviados al servidor';
-      this.$refs['form-modal-antecedentes-morbidos'].show();
+      this.$swal({
+        text: 'Los datos han sido correctamente enviados al servidor',
+        toast: true,
+        position: 'top-end',
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: false,
+      });
 
       setTimeout(() => { this.$router.go(this.$router.currentRoute); }, 2000);
 
-
-    },
-    backStep () {
-      this.$router.push({ name: 'FormularioNurseInformacionPaciente' })
     },
     nextStep () {
+
       this.$storage.set('formPatientData', this.patient);
 
       this.$swal({
@@ -1714,17 +2468,55 @@ export default {
         timer: 5000,
         timerProgressBar: true,
       });
-      this.$router.push({ name: 'FormularioNurseAntecedentesQuirurgicos' });
+
+      this.$router.push({ name: 'FormularioNurseAntecedentesMorbidos' });
+
+    },
+    backHome () {
+      this.$storage.remove('formPatientData');
+      this.$router.push({ name: 'HomeContentNurse' });
     },
     confirmDiscard () {
-      this.modalMessage = '¿Confirma que desea descartar los cambios y volver al paso anterior?';
+      this.modalMessage = '¿Confirma que desea descartar los cambios y volver al home?';
       this.modalIcon = 'warning';
-      this.$refs['form-modal-antecedentes-morbidos'].show();
+      this.$refs['form-modal'].show();
     },
     closeModal () {
-      this.$refs['form-modal-antecedentes-morbidos'].hide();
+      this.$refs['form-modal'].hide();
+    },
+
+  },
+  computed: {
+    scoreCSum () {
+
+      let scoreC = 0;
+      for (let i = 0; i < this.patient.scoreCPatientItems.length; i++) {
+
+        if (this.patient.scoreCPatientItems[i]['score'] != '')
+          scoreC += parseInt(this.patient.scoreCPatientItems[i]['score']);
+
+      }
+
+      return scoreC;
+    },
+    scoreTotal () {
+
+      let scoreTotal = 0;
+
+      if (this.patient.scoreA != '')
+        scoreTotal += parseInt(this.patient.scoreA)
+
+      if (this.patient.scoreB != '')
+        scoreTotal += parseInt(this.patient.scoreB)
+
+      if (this.scoreCSum != '')
+        scoreTotal += parseInt(this.scoreCSum)
+
+      return scoreTotal;
     }
+
   }
+
 
 }
 </script>

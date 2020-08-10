@@ -51,16 +51,16 @@ export default {
       steps: [
         { number: '1', text: '1. Información del paciente', icon: 'fas fa-user-edit', path: 'FormularioNurseInformacionPaciente' },
         { number: '2', text: '2. Antecedentes mórbidos y farmacológicos', icon: 'fas fa-weight', path: 'FormularioNurseAntecedentesMorbidos' },
-        { number: '3', text: '3. Antecedentes quirúrgicos', icon: 'fas fa-notes-medical', path: 'HomeContentNurse' },
+        { number: '3', text: '3. Antecedentes quirúrgicos', icon: 'fas fa-notes-medical', path: 'FormularioNurseAntecedentesQuirurgicos' },
         { number: '4', text: '4. COVID-19', icon: 'fas fa-virus', path: 'FormularioNurseCovid' },
-        { number: '5', text: '5. Último paso', icon: 'fab fa-reddit-alien', path: 'HomeContentNurse' },
+        { number: '5', text: '5. Score C', icon: 'fab fa-reddit-alien', path: 'FormularioNurseScoreC' },
 
       ]
     }
   },
   methods: {
     clickOnStepper (e) {
-      console.info('App currentRoute:', this.$router.currentRoute)
+      //   console.info('App currentRoute:', this.$router.currentRoute)
       if (this.activeStep != e.number)
         this.$router.push({ name: e.path })
 
