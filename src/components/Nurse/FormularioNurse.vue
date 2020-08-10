@@ -165,10 +165,18 @@
           <h6 class="font-weight-normal">¿Dispone de acompañante? </h6>
         </b-col>
         <b-col cols="8">
-          <b-form-select
+          <!-- <b-form-select
             v-model="patient.selectedCompanion"
             :options="patient.optionsCompanion"
-          ></b-form-select>
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedCompanion"
+            :options="patient.optionsCompanion"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
         </b-col>
       </b-row>
 
@@ -180,10 +188,18 @@
           <h6 class="font-weight-normal">¿Dispone de un centro de salud a menos de 30 min? </h6>
         </b-col>
         <b-col cols="8">
-          <b-form-select
+          <!-- <b-form-select
             v-model="patient.selectedNearbyHealthCenter"
             :options="patient.optionsNearbyHealthCenter"
-          ></b-form-select>
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedNearbyHealthCenter"
+            :options="patient.optionsNearbyHealthCenter"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
         </b-col>
       </b-row>
 
@@ -231,18 +247,18 @@
           <h6 class="font-weight-normal">Fuma: </h6>
         </b-col>
         <b-col cols="8">
-          <b-form-select
+          <!-- <b-form-select
             v-model="patient.selectedSmoke"
             :options="patient.optionsSmoke"
-          ></b-form-select>
-          <!-- <b-form-radio-group
-          v-model="patient.selectedSmoke"
-          :options="patient.optionsSmoke"
-          class="mb-3"
-          value-field="item"
-          text-field="name"
-          disabled-field="notEnabled"
-        ></b-form-radio-group> -->
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedSmoke"
+            :options="patient.optionsSmoke"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
         </b-col>
       </b-row>
 
@@ -273,10 +289,18 @@
           <h6 class="font-weight-normal">Consume alcohol: </h6>
         </b-col>
         <b-col cols="8">
-          <b-form-select
+          <!-- <b-form-select
             v-model="patient.selectedAlcohol"
             :options="patient.optionsAlcohol"
-          ></b-form-select>
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedAlcohol"
+            :options="patient.optionsAlcohol"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
         </b-col>
       </b-row>
 
@@ -306,10 +330,18 @@
           <h6 class="font-weight-normal">Consume drogas: </h6>
         </b-col>
         <b-col cols="8">
-          <b-form-select
+          <!-- <b-form-select
             v-model="patient.selectedDrugs"
             :options="patient.optionsDrugs"
-          ></b-form-select>
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedDrugs"
+            :options="patient.optionsDrugs"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
         </b-col>
       </b-row>
     </div>
@@ -355,894 +387,1171 @@
       </b-col>
     </b-row>
 
-    <b-row align-v="center">
-      <b-col class="mt-5 mb-3">
-        <h4 class="font-weight-bold">Antecedentes mórbidos</h4>
-      </b-col>
-    </b-row>
+    <div class="shadow rounded border p-4 mt-3">
+      <b-row align-v="center">
+        <b-col class="mt-5 mb-3">
+          <h4 class="font-weight-bold">Antecedentes mórbidos</h4>
+        </b-col>
+      </b-row>
 
-    <b-row align-v="center">
-      <b-col class="mt-3 mb-3">
-        <h5 class="font-weight-bold">Enfermedad cardiovascular</h5>
-      </b-col>
-    </b-row>
+      <b-row align-v="center">
+        <b-col class="mt-3 mb-3">
+          <h5 class="font-weight-bold">Enfermedad cardiovascular</h5>
+        </b-col>
+      </b-row>
 
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">HTA: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedHTA"
+            :options="patient.optionsHTA"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedHTA"
+            :options="patient.optionsHTA"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
+
+      <b-row
+        align-v="center"
+        v-if="patient.selectedHTA === 'Sí'"
       >
-        <h6 class="font-weight-normal">HTA: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedHTA"
-          :options="patient.optionsHTA"
-        ></b-form-select>
-      </b-col>
-    </b-row>
+        <b-col
+          cols="4"
+          class="mt-3 mb-5"
+        >
+          <h6 class="font-italic">¿Qué medicamentos utiliza para HTA? </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-input
+            v-model="patient.htaMedications"
+            description="Ingrese los medicamentos separados por una coma (,)"
+          ></b-form-input>
+          <span class="font-weight-normal">Número de medicamentos: {{ medicationsQuantity(patient.htaMedications) }}</span>
+        </b-col>
+      </b-row>
 
-    <!-- <b-row
-      align-v="center"
-      v-if="patient.selectedHTA === 'Sí'"
-    >
-      <b-col
-        cols="4"
-        class="mt-3 mb-5"
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">DM: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedDM"
+            :options="patient.optionsDM"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedDM"
+            :options="patient.optionsDM"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
+
+      <b-row
+        align-v="center"
+        v-if="patient.selectedDM === 'Sí'"
       >
-        <h6 class="font-italic">¿Qué medicamentos utiliza para HTA? </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-input
-          v-model="patient.htaMedications"
-          description="Ingrese los medicamentos separados por una coma (,)"
-        ></b-form-input>
-        <span class="font-weight-normal">Número de medicamentos: {{ medicationsQuantity(patient.htaMedications) }}</span>
-      </b-col>
-    </b-row> -->
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-italic">Hipoglicemiantes Orales: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedUseHipoglicemianteOral"
+            :options="patient.optionsUseHipoglicemianteOral"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedUseHipoglicemianteOral"
+            :options="patient.optionsUseHipoglicemianteOral"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
 
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
+      <b-row
+        align-v="center"
+        v-if="patient.selectedDM === 'Sí' && patient.selectedUseHipoglicemianteOral === 'Sí'"
       >
-        <h6 class="font-weight-normal">DM: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedDM"
-          :options="patient.optionsDM"
-        ></b-form-select>
-      </b-col>
-    </b-row>
+        <b-col
+          cols="4"
+          class="mt-3 mb-5"
+        >
+          <h6 class="font-italic">Indique hipoglicemiantes orales utilizados: </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-input
+            v-model="patient.hipoglicemiantesOralesMedications"
+            description="Ingrese los medicamentos separados por una coma (,)"
+          ></b-form-input>
+          <span class="font-weight-normal">Número de hipoglicemiantes: {{ medicationsQuantity(patient.hipoglicemiantesOralesMedications) }}</span>
+        </b-col>
+      </b-row>
 
-    <!-- <b-row
-      align-v="center"
-      v-if="patient.selectedDM === 'Sí'"
-    >
-      <b-col
-        cols="4"
-        class="my-3"
+      <b-row
+        align-v="center"
+        v-if="patient.selectedDM === 'Sí'"
       >
-        <h6 class="font-italic">Hipoglicemiantes Orales: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedUseHipoglicemianteOral"
-          :options="patient.optionsUseHipoglicemianteOral"
-        ></b-form-select>
-      </b-col>
-    </b-row> 
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-italic">Insulina: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedInsulina"
+            :options="patient.optionsInsulina"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedInsulina"
+            :options="patient.optionsInsulina"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
 
-    <b-row
-      align-v="center"
-      v-if="patient.selectedDM === 'Sí' && patient.selectedUseHipoglicemianteOral === 'Sí'"
-    >
-      <b-col
-        cols="4"
-        class="mt-3 mb-5"
+      <b-row
+        align-v="center"
+        v-if="patient.selectedDM === 'Sí' && patient.selectedInsulina === 'Sí'"
       >
-        <h6 class="font-italic">Indique hipoglicemiantes orales utilizados: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-input
-          v-model="patient.hipoglicemiantesOralesMedications"
-          description="Ingrese los medicamentos separados por una coma (,)"
-        ></b-form-input>
-        <span class="font-weight-normal">Número de hipoglicemiantes: {{ medicationsQuantity(patient.hipoglicemiantesOralesMedications) }}</span>
-      </b-col>
-    </b-row> -->
+        <b-col
+          cols="4"
+          class="mt-3 mb-5"
+        >
+          <h6 class="font-italic">Indique insulinas utilizadas: </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-input
+            v-model="patient.insulinaMedications"
+            description="Ingrese los medicamentos separados por una coma (,)"
+          ></b-form-input>
+          <span class="font-weight-normal">Número de insulinas: {{ medicationsQuantity(patient.insulinaMedications) }}</span>
+        </b-col>
+      </b-row>
 
-    <!-- <b-row
-      align-v="center"
-      v-if="patient.selectedDM === 'Sí'"
-    >
-      <b-col
-        cols="4"
-        class="my-3"
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">IAM: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedIAM"
+            :options="patient.optionsIAM"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedIAM"
+            :options="patient.optionsIAM"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
+
+      <b-row
+        align-v="center"
+        v-if="patient.selectedIAM === 'Sí'"
       >
-        <h6 class="font-italic">Insulina: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedInsulina"
-          :options="patient.optionsInsulina"
-        ></b-form-select>
-      </b-col>
-    </b-row>
+        <b-col
+          cols="4"
+          class="mt-3 mb-5"
+        >
+          <h6 class="font-italic">¿Qué medicamentos utiliza para IAM? </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-input
+            v-model="patient.iamMedications"
+            description="Ingrese los medicamentos separados por una coma (,)"
+          ></b-form-input>
+          <span class="font-weight-normal">Número de medicamentos: {{ medicationsQuantity(patient.iamMedications) }}</span>
+        </b-col>
+      </b-row>
 
-    <b-row
-      align-v="center"
-      v-if="patient.selectedDM === 'Sí' && patient.selectedInsulina === 'Sí'"
-    >
-      <b-col
-        cols="4"
-        class="mt-3 mb-5"
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Enfermedad coronaria: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedCoronaryDisease"
+            :options="patient.optionsCoronaryDisease"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedCoronaryDisease"
+            :options="patient.optionsCoronaryDisease"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
+
+      <b-row
+        align-v="center"
+        v-if="patient.selectedCoronaryDisease === 'Sí'"
       >
-        <h6 class="font-italic">Indique insulinas utilizadas: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-input
-          v-model="patient.insulinaMedications"
-          description="Ingrese los medicamentos separados por una coma (,)"
-        ></b-form-input>
-        <span class="font-weight-normal">Número de insulinas: {{ medicationsQuantity(patient.insulinaMedications) }}</span>
-      </b-col>
-    </b-row> -->
+        <b-col
+          cols="4"
+          class="mt-3 mb-5"
+        >
+          <h6 class="font-italic">¿Qué medicamentos utiliza para enfermedad coronaria? </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-input
+            v-model="patient.coronaryDiseaseMedications"
+            description="Ingrese los medicamentos separados por una coma (,)"
+          ></b-form-input>
+          <span class="font-weight-normal">Número de medicamentos: {{ medicationsQuantity(patient.coronaryDiseaseMedications) }}</span>
+        </b-col>
+      </b-row>
 
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
+      <b-row align-v="center">
+        <b-col class="mt-4 mb-3">
+          <h5 class="font-weight-bold">Enfermedad pulmonar</h5>
+        </b-col>
+      </b-row>
+
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Asma: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedAsthma"
+            :options="patient.optionsAsthma"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedAsthma"
+            :options="patient.optionsAsthma"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
+
+      <b-row
+        align-v="center"
+        v-if="patient.selectedAsthma === 'Sí'"
       >
-        <h6 class="font-weight-normal">IAM: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedIAM"
-          :options="patient.optionsIAM"
-        ></b-form-select>
-      </b-col>
-    </b-row>
+        <b-col
+          cols="4"
+          class="mt-3 mb-5"
+        >
+          <h6 class="font-italic">¿Qué medicamentos utiliza para el asma? </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-input
+            v-model="patient.asthmaMedications"
+            description="Ingrese los medicamentos separados por una coma (,)"
+          ></b-form-input>
+          <span class="font-weight-normal">Número de medicamentos: {{ medicationsQuantity(patient.asthmaMedications) }}</span>
+        </b-col>
+      </b-row>
 
-    <!-- <b-row
-      align-v="center"
-      v-if="patient.selectedIAM === 'Sí'"
-    >
-      <b-col
-        cols="4"
-        class="mt-3 mb-5"
+      <b-row
+        align-v="center"
+        v-if="patient.selectedAsthma === 'Sí' && medicationsQuantity(patient.asthmaMedications) > 0"
       >
-        <h6 class="font-italic">¿Qué medicamentos utiliza para IAM? </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-input
-          v-model="patient.iamMedications"
-          description="Ingrese los medicamentos separados por una coma (,)"
-        ></b-form-input>
-        <span class="font-weight-normal">Número de medicamentos: {{ medicationsQuantity(patient.iamMedications) }}</span>
-      </b-col>
-    </b-row> -->
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-italic">Frecuencia de uso: </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-select
+            v-model="patient.selectedUseMedicationsAsthma"
+            :options="patient.optionsUseMedicationsAsthma"
+          ></b-form-select>
+        </b-col>
+      </b-row>
 
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">EPOC: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedEPOC"
+            :options="patient.optionsEPOC"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedEPOC"
+            :options="patient.optionsEPOC"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
+
+      <b-row
+        align-v="center"
+        v-if="patient.selectedEPOC === 'Sí'"
       >
-        <h6 class="font-weight-normal">Enfermedad coronaria: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedCoronaryDisease"
-          :options="patient.optionsCoronaryDisease"
-        ></b-form-select>
-      </b-col>
-    </b-row>
+        <b-col
+          cols="4"
+          class="mt-3 mb-5"
+        >
+          <h6 class="font-italic">¿Qué medicamentos utiliza para la EPOC? </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-input
+            v-model="patient.epocMedications"
+            description="Ingrese los medicamentos separados por una coma (,)"
+          ></b-form-input>
+          <span class="font-weight-normal">Número de medicamentos: {{ medicationsQuantity(patient.epocMedications) }}</span>
+        </b-col>
+      </b-row>
 
-    <!-- <b-row
-      align-v="center"
-      v-if="patient.selectedCoronaryDisease === 'Sí'"
-    >
-      <b-col
-        cols="4"
-        class="mt-3 mb-5"
+      <b-row
+        align-v="center"
+        v-if="patient.selectedEPOC === 'Sí' && medicationsQuantity(patient.epocMedications) > 0"
       >
-        <h6 class="font-italic">¿Qué medicamentos utiliza para enfermedad coronaria? </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-input
-          v-model="patient.iamMedications"
-          description="Ingrese los medicamentos separados por una coma (,)"
-        ></b-form-input>
-        <span class="font-weight-normal">Número de medicamentos: {{ medicationsQuantity(patient.coronaryDiseaseMedications) }}</span>
-      </b-col>
-    </b-row> -->
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-italic">Frecuencia de uso: </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-select
+            v-model="patient.selectedUseMedicationsEPOC"
+            :options="patient.optionsUseMedicationsEPOC"
+          ></b-form-select>
+        </b-col>
+      </b-row>
 
-    <b-row align-v="center">
-      <b-col class="mt-4 mb-3">
-        <h5 class="font-weight-bold">Enfermedad pulmonar</h5>
-      </b-col>
-    </b-row>
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Fibrosis Quística: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedFibrosisQuistica"
+            :options="patient.optionsFibrosisQuistica"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedFibrosisQuistica"
+            :options="patient.optionsFibrosisQuistica"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
 
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
+      <b-row
+        align-v="center"
+        v-if="patient.selectedFibrosisQuistica === 'Sí'"
       >
-        <h6 class="font-weight-normal">Asma: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedAsthma"
-          :options="patient.optionsAsthma"
-        ></b-form-select>
-      </b-col>
-    </b-row>
+        <b-col
+          cols="4"
+          class="mt-3 mb-5"
+        >
+          <h6 class="font-italic">¿Qué medicamentos utiliza para la Fibrosis Quística? </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-input
+            v-model="patient.fibrosisQuisticaMedications"
+            description="Ingrese los medicamentos separados por una coma (,)"
+          ></b-form-input>
+          <span class="font-weight-normal">Número de medicamentos: {{ medicationsQuantity(patient.fibrosisQuisticaMedications) }}</span>
+        </b-col>
+      </b-row>
 
-    <!-- <b-row
-      align-v="center"
-      v-if="patient.selectedAsthma === 'Sí'"
-    >
-      <b-col
-        cols="4"
-        class="mt-3 mb-5"
+      <b-row
+        align-v="center"
+        v-if="patient.selectedFibrosisQuistica === 'Sí' && medicationsQuantity(patient.fibrosisQuisticaMedications) > 0"
       >
-        <h6 class="font-italic">¿Qué medicamentos utiliza para el asma? </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-input
-          v-model="patient.asthmaMedications"
-          description="Ingrese los medicamentos separados por una coma (,)"
-        ></b-form-input>
-        <span class="font-weight-normal">Número de medicamentos: {{ medicationsQuantity(patient.asthmaMedications) }}</span>
-      </b-col>
-    </b-row> 
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-italic">Frecuencia de uso: </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-select
+            v-model="patient.selectedUseMedicationsFibrosisQuistica"
+            :options="patient.optionsUseMedicationsFibrosisQuistica"
+          ></b-form-select>
+        </b-col>
+      </b-row>
 
-    <b-row
-      align-v="center"
-      v-if="patient.selectedAsthma === 'Sí' && medicationsQuantity(patient.asthmaMedications) > 0"
-    >
-      <b-col
-        cols="4"
-        class="my-3"
+      <b-row align-v="center">
+        <b-col class="mt-4 mb-3">
+          <h5 class="font-weight-bold">Otros</h5>
+        </b-col>
+      </b-row>
+
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">SAOS: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedSAOS"
+            :options="patient.optionsSAOS"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedSAOS"
+            :options="patient.optionsSAOS"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
+
+      <b-row
+        align-v="center"
+        v-if="patient.selectedSAOS === 'Sí'"
       >
-        <h6 class="font-italic">Frecuencia de uso: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedUseMedicationsAsthma"
-          :options="patient.optionsUseMedicationsAsthma"
-        ></b-form-select>
-      </b-col>
-    </b-row> -->
+        <b-col cols="4">
+          <h6 class="font-italic">Tratamiento SAOS: </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-select
+            v-model="patient.selectedSAOSTreatment"
+            :options="patient.optionsSAOSTreatment"
+          ></b-form-select>
+        </b-col>
+      </b-row>
 
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Inmunocompromiso: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedInmunoCompromiso"
+            :options="patient.optionsInmunoCompromiso"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedInmunoCompromiso"
+            :options="patient.optionsInmunoCompromiso"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
+
+      <b-row
+        align-v="center"
+        v-if="patient.selectedInmunoCompromiso === 'Sí'"
       >
-        <h6 class="font-weight-normal">EPOC: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedEPOC"
-          :options="patient.optionsEPOC"
-        ></b-form-select>
-      </b-col>
-    </b-row>
+        <b-col cols="4">
+          <h6 class="font-italic">Nivel de inmunocompromiso: </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-select
+            v-model="patient.selectedInmunoCompromisoTreatment"
+            :options="patient.optionsInmunoCompromisoTreatment"
+          ></b-form-select>
+        </b-col>
+      </b-row>
 
-    <!-- <b-row
-      align-v="center"
-      v-if="patient.selectedEPOC === 'Sí'"
-    >
-      <b-col
-        cols="4"
-        class="mt-3 mb-5"
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Epilepsia: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedEpilepsia"
+            :options="patient.optionsEpilepsia"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedEpilepsia"
+            :options="patient.optionsEpilepsia"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
+
+      <b-row
+        align-v="center"
+        v-if="patient.selectedEpilepsia === 'Sí'"
       >
-        <h6 class="font-italic">¿Qué medicamentos utiliza para la EPOC? </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-input
-          v-model="patient.epocMedications"
-          description="Ingrese los medicamentos separados por una coma (,)"
-        ></b-form-input>
-        <span class="font-weight-normal">Número de medicamentos: {{ medicationsQuantity(patient.epocMedications) }}</span>
-      </b-col>
-    </b-row>
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-italic">¿Qué medicamentos utiliza para la Epilepsia? </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-input v-model="patient.epilepsiaMedications"></b-form-input>
+        </b-col>
+      </b-row>
 
-    <b-row
-      align-v="center"
-      v-if="patient.selectedEPOC === 'Sí' && medicationsQuantity(patient.epocMedications) > 0"
-    >
-      <b-col
-        cols="4"
-        class="my-3"
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Insuficiencia Renal: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedInsuficienciaRenal"
+            :options="patient.optionsInsuficienciaRenal"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedInsuficienciaRenal"
+            :options="patient.optionsInsuficienciaRenal"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
+
+      <b-row
+        align-v="center"
+        v-if="patient.selectedInsuficienciaRenal === 'Sí'"
       >
-        <h6 class="font-italic">Frecuencia de uso: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedUseMedicationsEPOC"
-          :options="patient.optionsUseMedicationsEPOC"
-        ></b-form-select>
-      </b-col>
-    </b-row> -->
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-italic">¿Se realiza diálisis? </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedDialisis"
+            :options="patient.optionsDialisis"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedDialisis"
+            :options="patient.optionsDialisis"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
 
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Enfermedades Tiroideas: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedEnfermedadesTiroideas"
+            :options="patient.optionsEnfermedadesTiroideas"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedEnfermedadesTiroideas"
+            :options="patient.optionsEnfermedadesTiroideas"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
+
+      <b-row
+        align-v="center"
+        v-if="patient.selectedEnfermedadesTiroideas === 'Sí'"
       >
-        <h6 class="font-weight-normal">Fibrosis Quística: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedFibrosisQuistica"
-          :options="patient.optionsFibrosisQuistica"
-        ></b-form-select>
-      </b-col>
-    </b-row>
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-italic">¿Qué medicamentos utiliza para las Enfermedades Tiroideas? </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-input v-model="patient.enfermedadesTiroideasMedications"></b-form-input>
+        </b-col>
+      </b-row>
 
-    <!-- <b-row
-      align-v="center"
-      v-if="patient.selectedFibrosisQuistica === 'Sí'"
-    >
-      <b-col
-        cols="4"
-        class="mt-3 mb-5"
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">AVE-DOC: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedAVE_DOC"
+            :options="patient.optionsAVE_DOC"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedAVE_DOC"
+            :options="patient.optionsAVE_DOC"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
+
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Coagulopatía: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedCoagulopatia"
+            :options="patient.optionsCoagulopatia"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedCoagulopatia"
+            :options="patient.optionsCoagulopatia"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
+
+      <b-row
+        align-v="center"
+        v-if="patient.selectedCoagulopatia === 'Sí'"
       >
-        <h6 class="font-italic">¿Qué medicamentos utiliza para la Fibrosis Quística? </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-input
-          v-model="patient.fibrosisQuisticaMedications"
-          description="Ingrese los medicamentos separados por una coma (,)"
-        ></b-form-input>
-        <span class="font-weight-normal">Número de medicamentos: {{ medicationsQuantity(patient.fibrosisQuisticaMedications) }}</span>
-      </b-col>
-    </b-row>
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-italic">¿Qué medicamentos utiliza para la Coagulopatía? </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-input v-model="patient.coagulopatiaMedications"></b-form-input>
+        </b-col>
+      </b-row>
 
-    <b-row
-      align-v="center"
-      v-if="patient.selectedFibrosisQuistica === 'Sí' && medicationsQuantity(patient.fibrosisQuisticaMedications) > 0"
-    >
-      <b-col
-        cols="4"
-        class="my-3"
+      <!-- ALERGIAS -->
+
+      <b-row align-v="center">
+        <b-col class="mt-4 mb-3">
+          <h5 class="font-weight-bold">Alergias</h5>
+        </b-col>
+      </b-row>
+
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Alergia Alimentaria: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedAlergiaAlimentaria"
+            :options="patient.optionsAlergiaAlimentaria"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedAlergiaAlimentaria"
+            :options="patient.optionsAlergiaAlimentaria"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
+
+      <b-row
+        align-v="center"
+        v-if="patient.selectedAlergiaAlimentaria === 'Sí'"
       >
-        <h6 class="font-italic">Frecuencia de uso: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedUseMedicationsFibrosisQuistica"
-          :options="patient.optionsUseMedicationsFibrosisQuistica"
-        ></b-form-select>
-      </b-col>
-    </b-row> -->
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-italic">¿Alergia a qué alimentos? </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-input v-model="patient.alergiaAlimentariaDetails"></b-form-input>
+        </b-col>
+      </b-row>
 
-    <b-row align-v="center">
-      <b-col class="mt-4 mb-3">
-        <h5 class="font-weight-bold">Otros</h5>
-      </b-col>
-    </b-row>
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Alergia Medicamentosa: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedAlergiaMedicamentosa"
+            :options="patient.optionsAlergiaMedicamentosa"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedAlergiaMedicamentosa"
+            :options="patient.optionsAlergiaMedicamentosa"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
 
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
+      <b-row
+        align-v="center"
+        v-if="patient.selectedAlergiaMedicamentosa === 'Sí'"
       >
-        <h6 class="font-weight-normal">SAOS: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedSAOS"
-          :options="patient.optionsSAOS"
-        ></b-form-select>
-      </b-col>
-    </b-row>
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-italic">¿Alergia a qué medicamentos? </h6>
+        </b-col>
+        <b-col cols="8">
+          <b-form-input v-model="patient.alergiaMedicamentosaDetails"></b-form-input>
+        </b-col>
+      </b-row>
 
-    <!-- <b-row
-      align-v="center"
-      v-if="patient.selectedSAOS === 'Sí'"
-    >
-      <b-col
-        cols="4"
-        class="mt-3 mb-5"
-      >
-        <h6 class="font-italic">Tratamiento SAOS: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedSAOSTreatment"
-          :options="patient.optionsSAOSTreatment"
-        ></b-form-select>
-      </b-col>
-    </b-row> -->
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Alergia al Látex: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedAlergiaLatex"
+            :options="patient.optionsAlergiaLatex"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedAlergiaLatex"
+            :options="patient.optionsAlergiaLatex"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
 
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-weight-normal">Inmunocompromiso: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedInmunoCompromiso"
-          :options="patient.optionsInmunoCompromiso"
-        ></b-form-select>
-      </b-col>
-    </b-row>
+      <b-row align-v="center">
+        <b-col class="mt-4 mb-3">
+          <h5 class="font-weight-bold">Sintomatología</h5>
+        </b-col>
+      </b-row>
 
-    <!-- <b-row
-      align-v="center"
-      v-if="patient.selectedInmunoCompromiso === 'Sí'"
-    >
-      <b-col
-        cols="4"
-        class="mt-3 mb-5"
-      >
-        <h6 class="font-italic">Nivel de inmunocompromiso: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedInmunoCompromisoTreatment"
-          :options="patient.optionsInmunoCompromisoTreatment"
-        ></b-form-select>
-      </b-col>
-    </b-row> -->
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Dolor de pecho: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedDolorPecho"
+            :options="patient.optionsDolorPecho"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedDolorPecho"
+            :options="patient.optionsDolorPecho"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+        </b-col>
+      </b-row>
 
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-weight-normal">Epilepsia: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedEpilepsia"
-          :options="patient.optionsEpilepsia"
-        ></b-form-select>
-      </b-col>
-    </b-row>
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Reacción a transfusión sanguínea: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedReaccionTransfusionSanguinea"
+            :options="patient.optionsReaccionTransfusionSanguinea"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedReaccionTransfusionSanguinea"
+            :options="patient.optionsReaccionTransfusionSanguinea"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
 
-    <!-- <b-row
-      align-v="center"
-      v-if="patient.selectedEpilepsia === 'Sí'"
-    >
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-italic">¿Qué medicamentos utiliza para la Epilepsia? </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-input v-model="patient.epilepsiaMedications"></b-form-input>
-      </b-col>
-    </b-row> -->
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Parálisis: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedParalisis"
+            :options="patient.optionsParalisis"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedParalisis"
+            :options="patient.optionsParalisis"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
 
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-weight-normal">Insuficiencia Renal: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedInsuficienciaRenal"
-          :options="patient.optionsInsuficienciaRenal"
-        ></b-form-select>
-      </b-col>
-    </b-row>
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Temblores: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedTemblores"
+            :options="patient.optionsTemblores"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedTemblores"
+            :options="patient.optionsTemblores"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
 
-    <!-- <b-row
-      align-v="center"
-      v-if="patient.selectedInsuficienciaRenal === 'Sí'"
-    >
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-italic">¿Se realiza diálisis? </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedDialisis"
-          :options="patient.optionsDialisis"
-        ></b-form-select>
-      </b-col>
-    </b-row> -->
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Dificultad para Hablar: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedDificultadParaHablar"
+            :options="patient.optionsDificultadParaHablar"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedDificultadParaHablar"
+            :options="patient.optionsDificultadParaHablar"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
 
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-weight-normal">Enfermedades Tiroideas: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedEnfermedadesTiroideas"
-          :options="patient.optionsEnfermedadesTiroideas"
-        ></b-form-select>
-      </b-col>
-    </b-row>
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Desmayos repentinos: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedDesmayosRepentinos"
+            :options="patient.optionsDesmayosRepentinos"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedDesmayosRepentinos"
+            :options="patient.optionsDesmayosRepentinos"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
 
-    <!-- <b-row
-      align-v="center"
-      v-if="patient.selectedEnfermedadesTiroideas === 'Sí'"
-    >
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-italic">¿Qué medicamentos utiliza para las Enfermedades Tiroideas? </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-input v-model="patient.enfermedadesTiroideasMedications"></b-form-input>
-      </b-col>
-    </b-row> -->
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Dificultad para respirar: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedDificultadParaRespirar"
+            :options="patient.optionsDificultadParaRespirar"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedDificultadParaRespirar"
+            :options="patient.optionsDificultadParaRespirar"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
 
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-weight-normal">AVE-DOC: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedAVE_DOC"
-          :options="patient.optionsAVE_DOC"
-        ></b-form-select>
-      </b-col>
-    </b-row>
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Ronquidos: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedRonquidos"
+            :options="patient.optionsRonquidos"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedRonquidos"
+            :options="patient.optionsRonquidos"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
 
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-weight-normal">Coagulopatía: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedCoagulopatia"
-          :options="patient.optionsCoagulopatia"
-        ></b-form-select>
-      </b-col>
-    </b-row>
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Falta de aire al caminar más de dos cuadras: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedFaltaDeAireAlCaminarMasDeDosCuadras"
+            :options="patient.optionsFaltaDeAireAlCaminarMasDeDosCuadras"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedFaltaDeAireAlCaminarMasDeDosCuadras"
+            :options="patient.optionsFaltaDeAireAlCaminarMasDeDosCuadras"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
 
-    <!-- <b-row
-      align-v="center"
-      v-if="patient.selectedCoagulopatia === 'Sí'"
-    >
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-italic">¿Qué medicamentos utiliza para la Coagulopatía? </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-input v-model="patient.coagulopatiaMedications"></b-form-input>
-      </b-col>
-    </b-row> -->
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Resfrío dolor de garganta en los últimos dos días: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedResfrioDolorDeGargantaUltimosDosDias"
+            :options="patient.optionsResfrioDolorDeGargantaUltimosDosDias"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedResfrioDolorDeGargantaUltimosDosDias"
+            :options="patient.optionsResfrioDolorDeGargantaUltimosDosDias"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
 
-    <!-- ALERGIAS -->
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Caries profundas: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedCariesProfundas"
+            :options="patient.optionsCariesProfundas"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedCariesProfundas"
+            :options="patient.optionsCariesProfundas"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
 
-    <b-row align-v="center">
-      <b-col class="mt-4 mb-3">
-        <h5 class="font-weight-bold">Alergias</h5>
-      </b-col>
-    </b-row>
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Disuria: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedDisuria"
+            :options="patient.optionsDisuria"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedDisuria"
+            :options="patient.optionsDisuria"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
 
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-weight-normal">Alergia Alimentaria: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedAlergiaAlimentaria"
-          :options="patient.optionsAlergiaAlimentaria"
-        ></b-form-select>
-      </b-col>
-    </b-row>
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Problemas musculoarticulares: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedProblemasMusculoArticulares"
+            :options="patient.optionsProblemasMusculoArticulares"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedProblemasMusculoArticulares"
+            :options="patient.optionsProblemasMusculoArticulares"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
 
-    <b-row
-      align-v="center"
-      v-if="patient.selectedAlergiaAlimentaria === 'Sí'"
-    >
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-italic">¿Alergia a qué alimentos? </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-input v-model="patient.alergiaAlimentariaDetails"></b-form-input>
-      </b-col>
-    </b-row>
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Reflujo: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedReflujo"
+            :options="patient.optionsReflujo"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedReflujo"
+            :options="patient.optionsReflujo"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
 
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-weight-normal">Alergia Medicamentosa: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedAlergiaMedicamentosa"
-          :options="patient.optionsAlergiaMedicamentosa"
-        ></b-form-select>
-      </b-col>
-    </b-row>
-
-    <b-row
-      align-v="center"
-      v-if="patient.selectedAlergiaMedicamentosa === 'Sí'"
-    >
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-italic">¿Alergia a qué medicamentos? </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-input v-model="patient.alergiaMedicamentosaDetails"></b-form-input>
-      </b-col>
-    </b-row>
-
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-weight-normal">Alergia al Látex: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedAlergiaLatex"
-          :options="patient.optionsAlergiaLatex"
-        ></b-form-select>
-      </b-col>
-    </b-row>
-
-    <b-row align-v="center">
-      <b-col class="mt-4 mb-3">
-        <h5 class="font-weight-bold">Sintomatología</h5>
-      </b-col>
-    </b-row>
-
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-weight-normal">Dolor de pecho: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedDolorPecho"
-          :options="patient.optionsDolorPecho"
-        ></b-form-select>
-      </b-col>
-    </b-row>
-
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-weight-normal">Reacción a transfusión sanguínea: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedReaccionTransfusionSanguinea"
-          :options="patient.optionsReaccionTransfusionSanguinea"
-        ></b-form-select>
-      </b-col>
-    </b-row>
-
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-weight-normal">Parálisis: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedParalisis"
-          :options="patient.optionsParalisis"
-        ></b-form-select>
-      </b-col>
-    </b-row>
-
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-weight-normal">Temblores: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedTemblores"
-          :options="patient.optionsTemblores"
-        ></b-form-select>
-      </b-col>
-    </b-row>
-
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-weight-normal">Dificultad para Hablar: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedDificultadParaHablar"
-          :options="patient.optionsDificultadParaHablar"
-        ></b-form-select>
-      </b-col>
-    </b-row>
-
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-weight-normal">Desmayos repentinos: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedDesmayosRepentinos"
-          :options="patient.optionsDesmayosRepentinos"
-        ></b-form-select>
-      </b-col>
-    </b-row>
-
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-weight-normal">Dificultad para respirar: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedDificultadParaRespirar"
-          :options="patient.optionsDificultadParaRespirar"
-        ></b-form-select>
-      </b-col>
-    </b-row>
-
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-weight-normal">Ronquidos: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedRonquidos"
-          :options="patient.optionsRonquidos"
-        ></b-form-select>
-      </b-col>
-    </b-row>
-
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-weight-normal">Falta de aire al caminar más de dos cuadras: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedFaltaDeAireAlCaminarMasDeDosCuadras"
-          :options="patient.optionsFaltaDeAireAlCaminarMasDeDosCuadras"
-        ></b-form-select>
-      </b-col>
-    </b-row>
-
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-weight-normal">Resfrío dolor de garganta en los últimos dos días: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedResfrioDolorDeGargantaUltimosDosDias"
-          :options="patient.optionsResfrioDolorDeGargantaUltimosDosDias"
-        ></b-form-select>
-      </b-col>
-    </b-row>
-
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-weight-normal">Caries profundas: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedCariesProfundas"
-          :options="patient.optionsCariesProfundas"
-        ></b-form-select>
-      </b-col>
-    </b-row>
-
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-weight-normal">Disuria: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedDisuria"
-          :options="patient.optionsDisuria"
-        ></b-form-select>
-      </b-col>
-    </b-row>
-
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-weight-normal">Problemas musculoarticulares: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedProblemasMusculoArticulares"
-          :options="patient.optionsProblemasMusculoArticulares"
-        ></b-form-select>
-      </b-col>
-    </b-row>
-
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-weight-normal">Reflujo: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedReflujo"
-          :options="patient.optionsReflujo"
-        ></b-form-select>
-      </b-col>
-    </b-row>
-
-    <b-row align-v="center">
-      <b-col
-        cols="4"
-        class="my-3"
-      >
-        <h6 class="font-weight-normal">Sangrado: </h6>
-      </b-col>
-      <b-col cols="8">
-        <b-form-select
-          v-model="patient.selectedSangrado"
-          :options="patient.optionsSangrado"
-        ></b-form-select>
-      </b-col>
-    </b-row>
+      <b-row align-v="center">
+        <b-col
+          cols="4"
+          class="my-3"
+        >
+          <h6 class="font-weight-normal">Sangrado: </h6>
+        </b-col>
+        <b-col cols="8">
+          <!-- <b-form-select
+            v-model="patient.selectedSangrado"
+            :options="patient.optionsSangrado"
+          ></b-form-select> -->
+          <b-form-radio-group
+            v-model="patient.selectedSangrado"
+            :options="patient.optionsSangrado"
+            class="mb-3"
+            value-field="item"
+            text-field="name"
+            disabled-field="notEnabled"
+          ></b-form-radio-group>
+        </b-col>
+      </b-row>
+    </div>
 
     <!-- FIN -->
 
@@ -1578,24 +1887,73 @@
           :fields="patient.scoreCPatientFields"
           class="shadow"
         >
-
-          <!-- <template v-slot:cell(index)="data">
-            <span>{{ patient.questionsCovid[data.index]['index'] }}</span>
+          <template v-slot:cell(score)="data">
+            <b-form-input
+              v-model="patient.scoreCPatientItems[data.index]['score']"
+              type="number"
+            ></b-form-input>
           </template>
-
-          <template v-slot:cell(pregunta)="data">
-            <span>{{ patient.questionsCovid[data.index]['question'] }}</span>
-          </template>
-
-          <template v-slot:cell(respuesta)="data">
-            <b-form-select
-              v-model="patient.questionsCovid[data.index]['selected']"
-              :options="patient.optionsCovid"
-              :disabled="data.index === 6 - 1"
-            ></b-form-select> 
-            </template> -->
-
         </b-table>
+      </b-col>
+    </b-row>
+
+    <b-row
+      align-v="center"
+      class="mt-5 mb-5"
+    >
+      <b-col>
+        <h4 class="font-weight-bold">Score C:</h4>
+      </b-col>
+      <b-col>
+        <b-form-input
+          :value="scoreCSum"
+          disabled
+        ></b-form-input>
+      </b-col>
+    </b-row>
+
+    <b-row
+      align-v="center"
+      class="my-2"
+    >
+      <b-col>
+        <h4 class="font-weight-bold">Score A:</h4>
+      </b-col>
+      <b-col>
+        <b-form-input
+          v-model="patient.scoreA"
+          type="number"
+        ></b-form-input>
+      </b-col>
+    </b-row>
+
+    <b-row
+      align-v="center"
+      class="my-2"
+    >
+      <b-col>
+        <h4 class="font-weight-bold">Score B:</h4>
+      </b-col>
+      <b-col>
+        <b-form-input
+          v-model="patient.scoreB"
+          type="number"
+        ></b-form-input>
+      </b-col>
+    </b-row>
+
+    <b-row
+      align-v="center"
+      class="my-2"
+    >
+      <b-col>
+        <h4 class="font-weight-bold">Score total: </h4>
+      </b-col>
+      <b-col>
+        <b-form-input
+          :value="scoreTotal"
+          disabled
+        ></b-form-input>
       </b-col>
     </b-row>
 
@@ -1834,6 +2192,33 @@ export default {
         optionsDiureticos: ['Sí', 'No'],
         selectedDiureticos: 'No',
         diureticosMedications: '',
+        optionsInmunosupresores: ['Sí', 'No'],
+        selectedInmunosupresores: 'No',
+        inmunosupresoresMedications: '',
+        optionsCortioides: ['Sí', 'No'],
+        selectedCortioides: 'No',
+        cortioidesMedications: '',
+        optionsAnticonvulsivantes: ['Sí', 'No'],
+        selectedAnticonvulsivantes: 'No',
+        anticonvulsivantesMedications: '',
+        optionsAntidepresivos: ['Sí', 'No'],
+        selectedAntidepresivos: 'No',
+        antidepresivosMedications: '',
+        optionsOtros: ['Sí', 'No'],
+        selectedOtros: 'No',
+        antidepresivosOtros: '',
+        optionsYerbasMedicinales: ['Sí', 'No'],
+        selectedYerbasMedicinales: 'No',
+        yerbasMedicinalesMedications: '',
+        optionsGinkoBiloba: ['Sí', 'No'],
+        selectedGinkoBiloba: 'No',
+        ginkoBilobaMedications: '',
+        optionsYerbasSanJuan: ['Sí', 'No'],
+        selectedYerbasSanJuan: 'No',
+        yerbasSanJuanMedications: '',
+        optionsEfedra: ['Sí', 'No'],
+        selectedEfedra: 'No',
+        efedraMedications: '',
         // Antecedentes Quirúrgicos
         surgeryFields: [
           {
@@ -1897,13 +2282,13 @@ export default {
           { 'nombreFarmaco': 'Antihipertensivos', 'utilizaFarmaco': ['optionsHTA', 'selectedHTA'], 'listadoFarmacos': 'htaMedications' },
           { 'nombreFarmaco': 'Digitálicos', 'utilizaFarmaco': ['optionsDigitalicos', 'selectedDigitalicos'], 'listadoFarmacos': 'digitalicosMedications' },
           { 'nombreFarmaco': 'Aspirina', 'utilizaFarmaco': ['optionsAspirina', 'selectedAspirina'], 'listadoFarmacos': 'aspirinaMedications' },
-          { 'nombreFarmaco': 'Anticoagulante', 'utilizaFarmaco': ['optionsCoagulopatia', 'selectedCoagulopatia'], 'listadoFarmacos': 'coagulopatiaMedications' },
-          { 'nombreFarmaco': 'Hipoglicemiante', 'utilizaFarmaco': ['optionsUseHipoglicemianteOral', 'selectedUseHipoglicemianteOral'], 'listadoFarmacos': 'hipoglicemiantesOralesMedications' },
+          { 'nombreFarmaco': 'Anticoagulantes', 'utilizaFarmaco': ['optionsCoagulopatia', 'selectedCoagulopatia'], 'listadoFarmacos': 'coagulopatiaMedications' },
+          { 'nombreFarmaco': 'Hipoglicemiantes', 'utilizaFarmaco': ['optionsUseHipoglicemianteOral', 'selectedUseHipoglicemianteOral'], 'listadoFarmacos': 'hipoglicemiantesOralesMedications' },
           { 'nombreFarmaco': 'Insulina', 'utilizaFarmaco': ['optionsInsulina', 'selectedInsulina'], 'listadoFarmacos': 'insulinaMedications' },
           { 'nombreFarmaco': 'Diuréticos', 'utilizaFarmaco': ['optionsDiureticos', 'selectedDiureticos'], 'listadoFarmacos': 'diureticosMedications' },
           { 'nombreFarmaco': 'Inmunosupresores', 'utilizaFarmaco': ['optionsInmunosupresores', 'selectedInmunosupresores'], 'listadoFarmacos': 'inmunosupresoresMedications' },
           { 'nombreFarmaco': 'Corticoides', 'utilizaFarmaco': ['optionsCortioides', 'selectedCortioides'], 'listadoFarmacos': 'cortioidesMedications' },
-          { 'nombreFarmaco': 'Anticonvulsivantes', 'utilizaFarmaco': ['optionsAnticonvulsivantes', 'selectedAnticonvulsivantes'], 'listadoFarmacos': 'anticonvulsivantesMedications' },
+          { 'nombreFarmaco': 'Anticonvulsivantes', 'utilizaFarmaco': ['optionsAnticonvulsivantes', 'selectedEpilepsia'], 'listadoFarmacos': 'epilepsiaMedications' },
           { 'nombreFarmaco': 'Antidepresivos', 'utilizaFarmaco': ['optionsAntidepresivos', 'selectedAntidepresivos'], 'listadoFarmacos': 'antidepresivosMedications' },
           { 'nombreFarmaco': 'Otros', 'utilizaFarmaco': ['optionsOtros', 'selectedOtros'], 'listadoFarmacos': 'antidepresivosOtros' },
           { 'nombreFarmaco': 'Yerbas Medicinales', 'utilizaFarmaco': ['optionsYerbasMedicinales', 'selectedYerbasMedicinales'], 'listadoFarmacos': 'yerbasMedicinalesMedications' },
@@ -1983,7 +2368,15 @@ export default {
           },
         ],
         scoreCPatientItems: [
-          { 'categoria': 'Edad', 'data': 24, 'infoPatient': '< 25 años', 'score': 1 }
+          { 'categoria': 'Edad', 'data': '24 años', 'infoPatient': '20 - 40 años', 'score': 2 },
+          { 'categoria': 'Neumopatía crónica (EPOC, asma, fibrosis quística)', 'data': '3 patologías', 'infoPatient': 'Tratamiento habitual', 'score': 5 },
+          { 'categoria': 'SAOS', 'data': 'No', 'infoPatient': 'No', 'score': 1 },
+          { 'categoria': 'Enfermedad cardiovascular', 'data': 'Sí', 'infoPatient': '3 Fármacos', 'score': 5 },
+          { 'categoria': 'IMC', 'data': '32,4', 'infoPatient': '> 30 kg/m2', 'score': 5 },
+          { 'categoria': 'Diabetes Mellitus tipo 2', 'data': 'Sí', 'infoPatient': '+ Insulina', 'score': 5 },
+          { 'categoria': 'Inmunosupresión', 'data': 'Moderado', 'infoPatient': 'Moderada', 'score': 4 },
+          { 'categoria': 'Síndrome gripal', 'data': 'Sí', 'infoPatient': 'Sí', 'score': 5 },
+          { 'categoria': 'Contacto con COVID-19 en los últimos 15 días', 'data': 'No', 'infoPatient': 'No', 'score': 1 },
         ],
         scoreCPatientFields: [
           {
@@ -2003,6 +2396,8 @@ export default {
             label: "Puntaje"
           },
         ],
+        scoreA: 0,
+        scoreB: 0
 
       }
     }
@@ -2089,17 +2484,38 @@ export default {
     closeModal () {
       this.$refs['form-modal'].hide();
     },
-  },
-  //   computed: {
-  //     pharmacologicalItems () {
 
-  //       return [
-  //         { 'nombreFarmaco': 'Antihipertensivos', 'utilizaFarmaco': ['optionsHTA', 'selectedHTA'], 'listadoFarmacos': 'htaMedications' },
-  //         { 'nombreFarmaco': 'Digitálicos', 'utilizaFarmaco': ['optionsDigitalicos', 'selectedDigitalicos'], 'listadoFarmacos': 'digitalicosMedications' },
-  //         { 'nombreFarmaco': 'Insulina', 'utilizaFarmaco': ['optionsInsulina', 'selectedInsulina'], 'listadoFarmacos': 'insulinaMedications' }
-  //       ];
-  //     }
-  //   }
+  },
+  computed: {
+    scoreCSum () {
+
+      let scoreC = 0;
+      for (let i = 0; i < this.patient.scoreCPatientItems.length; i++) {
+
+        if (this.patient.scoreCPatientItems[i]['score'] != '')
+          scoreC += parseInt(this.patient.scoreCPatientItems[i]['score']);
+
+      }
+
+      return scoreC;
+    },
+    scoreTotal () {
+
+      let scoreTotal = 0;
+
+      if (this.patient.scoreA != '')
+        scoreTotal += parseInt(this.patient.scoreA)
+
+      if (this.patient.scoreB != '')
+        scoreTotal += parseInt(this.patient.scoreB)
+
+      if (this.scoreCSum != '')
+        scoreTotal += parseInt(this.scoreCSum)
+
+      return scoreTotal;
+    }
+
+  }
 
 
 }
